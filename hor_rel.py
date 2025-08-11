@@ -14,7 +14,7 @@ plt.rc('font', family=font_name)
 plt.rcParams['axes.unicode_minus'] = False
 
 # 사용자 입력 기관
-UserInput = ['국토교통부', '기업은행']
+UserInput = ['산업은행']
 
 # 소유 관계 탐색 함수
 def org_owners(df, target_orgs):
@@ -115,14 +115,14 @@ for node in UserInput:
 plt.figure(figsize=(12, 10))
 nx.draw_networkx_nodes(DI, pos, node_color='skyblue', node_size=300)
 
-connect_style = 'arc3,rad=0.1'
+connect_style = 'arc3,rad=0.01'
 nx.draw_networkx_edges(DI, pos, edgelist=edges_userOwns, connectionstyle=connect_style, edge_color='green', arrowstyle='->', arrowsize=15, width=2)
 nx.draw_networkx_edges(DI, pos, edgelist=edges_userOwner, connectionstyle=connect_style, edge_color='red', arrowstyle='->', arrowsize=15, width=2)
 nx.draw_networkx_edges(DI, pos, edgelist=orgs_notuser, connectionstyle=connect_style, edge_color='blue', arrowstyle='->', arrowsize=15, width=2)
 
 nx.draw_networkx_labels(DI, pos, font_size=10, font_family='malgun gothic')
 labels = nx.get_edge_attributes(DI, 'weight')
-nx.draw_networkx_edge_labels(DI, pos, edge_labels=labels, label_pos=0.4, font_family='malgun gothic', font_size=9)
+nx.draw_networkx_edge_labels(DI, pos, edge_labels=labels, label_pos=0.5, font_family='malgun gothic', font_size=9)
 
 plt.title("공기업 출자구조", fontsize=15)
 plt.axis('off')
